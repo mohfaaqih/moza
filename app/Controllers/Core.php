@@ -64,6 +64,14 @@ class Core extends BaseController
     
         $title = $this->request->getVar('judul');
         $slug = url_title($title, '-', true);
+        $randomNumber = rand(100, 999); // Generate a random 3-digit number
+        $slug .= '-' . $randomNumber;
+    
+        $link = $this->request->getVar('link');
+        if (!empty($link) && !filter_var($link, FILTER_VALIDATE_URL)) {
+            // Invalid URL, handle the error (e.g., show error message or redirect back with error)
+            return redirect()->back()->withInput()->with('error', 'Invalid URL for link field.');
+        }
     
         $outfitModel->save([
             'title' => $title,
@@ -72,7 +80,7 @@ class Core extends BaseController
             'description' => $this->request->getVar('description'),
             'feed' => $this->request->getVar('feed'),
             'item' => $this->request->getVar('item'),
-            'link' => $this->request->getVar('link')
+            'link' => $link
         ]);
     
         return redirect()->to('/');

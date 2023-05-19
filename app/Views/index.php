@@ -15,9 +15,6 @@
 <section class="section site-portfolio">
   <div class="container">
     <div class="row mb-5 align-items-center" style="margin-top: -50px;">
-      <!-- <div>
-        <a href="/create" class="btn btn-black mb-3">Add Article</a>
-      </div> -->
       <div class="col-sm-12">
         <div class="row">
           <?php foreach($outfit as $o) { ?>
