@@ -69,7 +69,7 @@ class Core extends BaseController
     
         $link = $this->request->getVar('link');
         if (!empty($link) && !filter_var($link, FILTER_VALIDATE_URL)) {
-            // Invalid URL, handle the error (e.g., show error message or redirect back with error)
+            // Invalid URL, handle the error
             return redirect()->back()->withInput()->with('error', 'Invalid URL for link field.');
         }
     
@@ -85,5 +85,6 @@ class Core extends BaseController
     
         return redirect()->to('/');
     }
+    
     
 }
